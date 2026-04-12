@@ -33,11 +33,11 @@ const NAV_HTML = `
 </nav>
 <div class="nav-overlay" id="navOverlay"></div>
 <div class="mobile-nav" id="mobileNav">
-  <a href="index.html"   data-page="index">🏠 Home</a>
-  <a href="about.html"   data-page="about">🕌 About</a>
-  <a href="courses.html" data-page="courses">📖 Courses</a>
-  <a href="gallery.html" data-page="gallery">🖼️ Gallery</a>
-  <a href="contact.html" data-page="contact">📞 Contact</a>
+  <a href="index.html"   data-page="index"><i class="bi bi-house-door-fill" style="margin-right:10px;"></i> Home</a>
+  <a href="about.html"   data-page="about"><i class="bi bi-info-circle-fill" style="margin-right:10px;"></i> About</a>
+  <a href="courses.html" data-page="courses"><i class="bi bi-book-half" style="margin-right:10px;"></i> Courses</a>
+  <a href="gallery.html" data-page="gallery"><i class="bi bi-images" style="margin-right:10px;"></i> Gallery</a>
+  <a href="contact.html" data-page="contact"><i class="bi bi-telephone-fill" style="margin-right:10px;"></i> Contact</a>
 </div>
 `;
 
@@ -61,30 +61,30 @@ const FOOTER_HTML = `
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="index.html">→ Home</a></li>
-          <li><a href="about.html">→ About Us</a></li>
-          <li><a href="courses.html">→ Our Courses</a></li>
-          <li><a href="gallery.html">→ Gallery</a></li>
-          <li><a href="contact.html">→ Contact</a></li>
+          <li><a href="index.html"><i class="bi bi-arrow-right-short"></i> Home</a></li>
+          <li><a href="about.html"><i class="bi bi-arrow-right-short"></i> About Us</a></li>
+          <li><a href="courses.html"><i class="bi bi-arrow-right-short"></i> Our Courses</a></li>
+          <li><a href="gallery.html"><i class="bi bi-arrow-right-short"></i> Gallery</a></li>
+          <li><a href="contact.html"><i class="bi bi-arrow-right-short"></i> Contact</a></li>
         </ul>
       </div>
       <!-- Contact -->
       <div class="footer-col">
         <h4>Contact</h4>
         <div class="footer-contact-item">
-          <span>📍</span>
+          <i class="bi bi-geo-alt-fill" style="color:var(--gold); font-size:1.1rem;"></i>
           <span>Bat Khela, District Malakand,<br>Khyber Pakhtunkhwa, Pakistan</span>
         </div>
         <div class="footer-contact-item">
-          <span>📞</span>
+          <i class="bi bi-telephone-fill" style="color:var(--gold); font-size:1.1rem;"></i>
           <span>+92 314 4928492</span>
         </div>
         <div class="footer-contact-item">
-          <span>💬</span>
+          <i class="bi bi-whatsapp" style="color:var(--gold); font-size:1.1rem;"></i>
           <a href="${WA_LINK}" target="_blank" rel="noopener">WhatsApp Us</a>
         </div>
         <div class="footer-contact-item">
-          <span>🕐</span>
+          <i class="bi bi-clock-fill" style="color:var(--gold); font-size:1.1rem;"></i>
           <span>Fajr – Isha<br>All Days Except Friday</span>
         </div>
       </div>
