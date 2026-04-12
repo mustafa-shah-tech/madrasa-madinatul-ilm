@@ -100,19 +100,8 @@
 }
 
 /* ── Card Hover Pulse ── */
-.course-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-lg);
-  border: 2px solid var(--green-500);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.course-card { position: relative; }
-.course-card:hover::after { opacity: 0.3; }
+/* Replaced with inset box-shadow in style.css (.course-card:hover)
+   to avoid being clipped by overflow:hidden on the card */
 
 /* ── Prayer Card Active Pulse ── */
 .prayer-card.active-prayer {

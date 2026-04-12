@@ -97,6 +97,7 @@
   .stat-number  { font-size: 2rem; }
 
   .prayer-grid  { grid-template-columns: 1fr 1fr; }
+  .prayer-card:last-child { grid-column: 1 / -1; }
 
   .gallery-grid { grid-template-columns: 1fr; }
   .gallery-item:nth-child(1),

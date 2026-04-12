@@ -13,7 +13,7 @@ const NAV_HTML = `
 <nav id="navbar">
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="assets/logo.png" alt="Madrasa Madinatul Ilm Logo" onerror="this.style.display='none'">
+      <img src="assets/logo.png" alt="Madrasa Madinatul Ilm Logo" onerror="this.onerror=null; this.style.display='none'">
       <div class="nav-logo-text">
         <span class="arabic-name">مدرسہ مدینۃ العلم</span>
         <span class="en-name">Madinatul Ilm · Bat Khela</span>
@@ -47,7 +47,7 @@ const FOOTER_HTML = `
       <!-- Brand -->
       <div class="footer-brand">
         <div class="nav-logo" style="margin-bottom:16px;">
-          <img src="assets/logo.png" alt="Logo" style="height:48px;width:48px;border-radius:50%;background:white;padding:2px;" onerror="this.style.display='none'">
+          <img src="assets/logo.png" alt="Logo" style="height:48px;width:48px;border-radius:50%;background:white;padding:2px;" onerror="this.onerror=null; this.style.display='none'">
           <div class="nav-logo-text">
             <span class="arabic-name">مدرسہ مدینۃ العلم</span>
             <span class="en-name">Madinatul Ilm · Bat Khela</span>
@@ -135,6 +135,10 @@ function initNavbar() {
 
   // Initial check
   if (window.scrollY > 30) navbar.classList.add('scrolled');
+
+  // Inner pages always show solid navbar from page load
+  const isInnerPage = document.body.dataset.page !== 'index';
+  if (isInnerPage) navbar.classList.add('scrolled');
 
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 30);
@@ -264,6 +268,11 @@ function initContactForm() {
       `السلام علیکم\nنام: ${name}\nفون: ${phone}\nکورس: ${course}\nپیغام: ${message}`
     );
 
+    if (!name || !phone) {
+      alert('براہ کرم نام اور فون نمبر درج کریں۔\nPlease enter your name and phone number.');
+      return;
+    }
+
     const btn = form.querySelector('button[type="submit"]');
     btn.textContent = 'Sending...';
     btn.disabled    = true;
@@ -271,7 +280,10 @@ function initContactForm() {
     setTimeout(() => {
       window.open(`https://wa.me/${PHONE_NUMBER}?text=${text}`, '_blank');
       const success = document.getElementById('form-success');
-      if (success) success.classList.add('visible');
+      if (success) {
+        success.classList.add('visible');
+        form.style.display = 'none';
+      }
       form.reset();
       btn.textContent = 'Send Message';
       btn.disabled    = false;
