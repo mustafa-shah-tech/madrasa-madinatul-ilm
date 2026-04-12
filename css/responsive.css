@@ -1,0 +1,116 @@
+/* ============================================================
+   MADRASA MADINATUL ILM — responsive.css
+   Mobile-first breakpoints
+   ============================================================ */
+
+/* ── Tablet (max 1024px) ── */
+@media (max-width: 1024px) {
+  :root { --section-pad: 60px; }
+
+  .stats-grid         { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(2) { border-right: none; }
+  .stat-item:nth-child(3) { border-right: 1px solid var(--gray-100); }
+
+  .courses-grid       { grid-template-columns: repeat(2, 1fr); }
+  .about-teaser-grid  { gap: 36px; }
+  .prayer-grid        { grid-template-columns: repeat(3, 1fr); }
+
+  .footer-grid        { grid-template-columns: 1fr 1fr; }
+  .footer-brand       { grid-column: 1 / -1; }
+
+  .full-course-card   { grid-template-columns: 240px 1fr; }
+  .pillars-grid       { grid-template-columns: repeat(2, 1fr); }
+
+  .contact-grid       { grid-template-columns: 1fr; }
+}
+
+/* ── Mobile (max 768px) ── */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: 48px;
+    --nav-height: 64px;
+  }
+
+  /* Nav */
+  .nav-links  { display: none; }
+  .hamburger  { display: flex; }
+
+  /* Hero */
+  .hero-bismillah { font-size: 1.5rem; }
+  .hero-logo      { width: 100px; height: 100px; }
+  .hero-btns      { flex-direction: column; align-items: center; }
+  .hero-btns .btn { width: 200px; justify-content: center; }
+
+  /* Stats */
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat-item  { border-right: none; border-bottom: 1px solid var(--gray-100); padding: 20px; }
+  .stat-item:nth-child(3) { border-right: none; }
+
+  /* Courses */
+  .courses-grid { grid-template-columns: 1fr; }
+
+  /* About teaser */
+  .about-teaser-grid { grid-template-columns: 1fr; }
+  .about-visual      { order: -1; }
+  .about-badge-float { bottom: -10px; right: 0px; }
+
+  /* Prayer */
+  .prayer-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Mission/Vision */
+  .mission-vision-grid { grid-template-columns: 1fr; }
+  .pillars-grid        { grid-template-columns: 1fr; }
+
+  /* Courses Full */
+  .full-course-card        { grid-template-columns: 1fr; }
+  .full-course-card.reverse { direction: ltr; }
+  .full-course-sidebar      { padding: 32px 24px; }
+
+  /* Gallery */
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(5) { grid-column: span 1; }
+
+  /* Contact */
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-row     { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer-grid          { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom        { flex-direction: column; text-align: center; }
+
+  /* CTA */
+  .cta-btns { flex-direction: column; align-items: center; }
+  .cta-btns .btn { width: 220px; justify-content: center; }
+
+  /* WhatsApp float */
+  .wa-float { bottom: 20px; right: 20px; }
+}
+
+/* ── Small Mobile (max 480px) ── */
+@media (max-width: 480px) {
+  .container { width: 94%; }
+
+  .hero-name-arabic { font-size: 1.6rem; }
+
+  .stats-grid   { grid-template-columns: 1fr 1fr; }
+  .stat-number  { font-size: 2rem; }
+
+  .prayer-grid  { grid-template-columns: 1fr 1fr; }
+
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(5) { grid-column: span 1; }
+
+  .ayah-arabic-text { font-size: 1.3rem; }
+
+  .page-hero { padding: 100px 0 48px; }
+}
+
+/* ── RTL Specific ── */
+[dir="rtl"] .footer-brand .arabic-quote {
+  border-left: none;
+  border-right: 3px solid var(--green-700);
+  padding-left: 0;
+  padding-right: 12px;
+}

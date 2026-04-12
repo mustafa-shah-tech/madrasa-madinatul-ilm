@@ -1,0 +1,41 @@
+[
+  {
+    "id": "qaida-nazra",
+    "icon": "📖",
+    "name_arabic": "القاعدة والناظرة",
+    "name_urdu": "قاعدہ و ناظرہ",
+    "name_en": "Qaida & Nazra",
+    "duration": "1–2 Years",
+    "age_group": "5–10 years",
+    "gender": "Boys & Girls",
+    "description_en": "The foundational course for Islamic education. Students learn correct Arabic pronunciation (Tajweed basics), reading of the Holy Quran fluently, and memorization of essential short Surahs and daily prayers.",
+    "description_urdu": "یہ بنیادی کورس ہے جس میں بچوں کو قاعدہ بغدادی، تجوید کے ابتدائی اصول، اور ناظرہ قرآن مجید پڑھنا سکھایا جاتا ہے۔",
+    "subjects": ["قاعدہ بغدادی", "تجوید ابتدائی", "ناظرہ قرآن", "حفظ سورتیں", "نماز", "کلمات"]
+  },
+  {
+    "id": "hifz",
+    "icon": "🕌",
+    "name_arabic": "حفظ القرآن الكريم",
+    "name_urdu": "حفظ القرآن",
+    "name_en": "Hifz-ul-Quran",
+    "duration": "3–5 Years",
+    "age_group": "8–16 years",
+    "gender": "Boys & Girls",
+    "description_en": "The noble program for complete memorization of the Holy Quran. Students receive individual attention, daily revision sessions, and are taught proper Tajweed rules throughout the memorization process.",
+    "description_urdu": "یہ کورس قرآن مجید کا مکمل حفظ کراتا ہے۔ ہر طالب علم کو انفرادی توجہ دی جاتی ہے اور روزانہ دہرائی کا نظام قائم ہے۔",
+    "subjects": ["حفظ قرآن مجید", "تجوید مکمل", "مراجعت یومیہ", "احکام تجوید", "ختم قرآن"]
+  },
+  {
+    "id": "alim",
+    "icon": "📚",
+    "name_arabic": "درس نظامي",
+    "name_urdu": "دورہ علوم اسلامیہ",
+    "name_en": "Dars-e-Nizami / Alim Course",
+    "duration": "6–8 Years",
+    "age_group": "12+ years",
+    "gender": "Boys",
+    "description_en": "The comprehensive Islamic scholarship program covering Tafseer, Hadith, Fiqh, Aqeedah, Arabic grammar, logic, and classical Islamic texts. Graduates earn the title of Aalim-e-Deen.",
+    "description_urdu": "یہ مکمل علوم اسلامیہ کا کورس ہے جس میں تفسیر، حدیث، فقہ، عقیدہ، نحو، صرف، منطق اور دیگر کتب شامل ہیں۔ فارغ التحصیل کو عالم دین کی سند دی جاتی ہے۔",
+    "subjects": ["تفسیر قرآن", "علم الحدیث", "فقہ اسلامی", "اصول فقہ", "عقیدہ", "نحو و صرف", "منطق", "عربی ادب", "سیرت النبی ﷺ", "اردو"]
+  }
+]
