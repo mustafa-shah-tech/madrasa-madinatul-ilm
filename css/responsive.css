@@ -139,6 +139,12 @@
   .hero-scroll { display: none; }
 }
 
+/* Hide hero-scroll on very short screens to prevent overlap */
+@media (max-height: 600px) {
+  .hero-scroll { display: none; }
+  .hero { padding-bottom: 20px; }
+}
+
 /* ── Small Mobile (max-width: 480px) ── */
 @media (max-width: 480px) {
   .container { width: 94%; }
