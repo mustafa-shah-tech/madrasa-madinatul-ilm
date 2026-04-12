@@ -31,6 +31,7 @@ const NAV_HTML = `
     </button>
   </div>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 <div class="mobile-nav" id="mobileNav">
   <a href="index.html"   data-page="index">🏠 Home</a>
   <a href="about.html"   data-page="about">🕌 About</a>
@@ -145,17 +146,34 @@ function initNavbar() {
   }, { passive: true });
 
   if (hamburger && mobileNav) {
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openMobileNav() {
+      hamburger.classList.add('open');
+      mobileNav.classList.add('open');
+      if (navOverlay) navOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileNav() {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      if (navOverlay) navOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileNav.classList.toggle('open');
+      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
     });
 
-    // Close on link click
+    if (navOverlay) navOverlay.addEventListener('click', closeMobileNav);
+
     mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileNav.classList.remove('open');
-      });
+      link.addEventListener('click', closeMobileNav);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMobileNav();
     });
   }
 }

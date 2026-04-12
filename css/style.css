@@ -316,18 +316,25 @@ h1, h2, h3, h4, h5 {
 
 /* Mobile Nav Drawer */
 .mobile-nav {
-  display: none;
   position: fixed;
   top: var(--nav-height);
   left: 0;
   right: 0;
   background: var(--green-900);
-  padding: 16px 0;
   z-index: 999;
   box-shadow: var(--shadow-lg);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.35s ease;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.mobile-nav.open { display: block; }
+.mobile-nav.open {
+  max-height: 400px;
+  opacity: 1;
+  pointer-events: all;
+}
 
 .mobile-nav a {
   display: block;
@@ -344,6 +351,18 @@ h1, h2, h3, h4, h5 {
   background: rgba(255,255,255,0.08);
   padding-left: 32px;
 }
+
+/* Nav Overlay */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 998;
+  backdrop-filter: blur(2px);
+}
+
+.nav-overlay.open { display: block; }
 
 /* ============================================================
    HERO
