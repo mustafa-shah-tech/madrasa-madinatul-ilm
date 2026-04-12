@@ -49,14 +49,18 @@
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden; /* B1: Moved here from body */
+}
 
 body {
   font-family: var(--font-body);
   background: var(--cream);
   color: var(--dark);
   line-height: 1.7;
-  overflow-x: hidden;
+  /* overflow-x: hidden; REMOVED */
 }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -290,7 +294,7 @@ h1, h2, h3, h4, h5 {
   color: var(--dark);
 }
 
-/* Hamburger */
+/* A1: Updated Hamburger & Mobile Nav Styles */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -299,6 +303,7 @@ h1, h2, h3, h4, h5 {
   padding: 8px;
   border: none;
   background: transparent;
+  z-index: 1001;
 }
 
 .hamburger span {
@@ -307,14 +312,24 @@ h1, h2, h3, h4, h5 {
   height: 2px;
   background: var(--white);
   border-radius: 2px;
-  transition: var(--transition);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile Nav Drawer */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 998;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.nav-overlay.open { display: block; }
+
 .mobile-nav {
   position: fixed;
   top: var(--nav-height);
@@ -325,44 +340,39 @@ h1, h2, h3, h4, h5 {
   box-shadow: var(--shadow-lg);
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.35s ease, opacity 0.35s ease;
+  transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1),
+              opacity 0.3s ease;
   opacity: 0;
   pointer-events: none;
 }
 
 .mobile-nav.open {
-  max-height: 400px;
+  max-height: 420px;
   opacity: 1;
   pointer-events: all;
 }
 
 .mobile-nav a {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: rgba(255,255,255,0.85);
-  padding: 14px 24px;
+  padding: 15px 24px;
   font-weight: 700;
+  font-size: 0.95rem;
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  transition: var(--transition);
+  transition: background 0.2s ease, padding-left 0.2s ease;
+  text-decoration: none;
 }
 
 .mobile-nav a:hover,
 .mobile-nav a.active {
   color: var(--white);
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.1);
   padding-left: 32px;
 }
 
-/* Nav Overlay */
-.nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 998;
-  backdrop-filter: blur(2px);
-}
-
-.nav-overlay.open { display: block; }
+.mobile-nav a:last-child { border-bottom: none; }
 
 /* ============================================================
    HERO
@@ -1695,3 +1705,25 @@ h1, h2, h3, h4, h5 {
 }
 
 .wa-float:hover .wa-tooltip { opacity: 1; }
+
+/* ============================================================
+   B2: Keyboard Focus Accessibility
+   ============================================================ */
+*:focus { outline: none; }
+
+*:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.25);
+}
+
+.hamburger:focus-visible {
+  outline: 2px solid var(--gold);
+  border-radius: 4px;
+}

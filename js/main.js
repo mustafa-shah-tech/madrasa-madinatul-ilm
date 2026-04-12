@@ -26,18 +26,18 @@ const NAV_HTML = `
       <a href="gallery.html" data-page="gallery">Gallery</a>
       <a href="contact.html" data-page="contact" class="nav-cta">Contact Us</a>
     </nav>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 <div class="nav-overlay" id="navOverlay"></div>
 <div class="mobile-nav" id="mobileNav">
-  <a href="index.html"   data-page="index"><i class="bi bi-house-door-fill" style="margin-right:10px;"></i> Home</a>
-  <a href="about.html"   data-page="about"><i class="bi bi-info-circle-fill" style="margin-right:10px;"></i> About</a>
-  <a href="courses.html" data-page="courses"><i class="bi bi-book-half" style="margin-right:10px;"></i> Courses</a>
-  <a href="gallery.html" data-page="gallery"><i class="bi bi-images" style="margin-right:10px;"></i> Gallery</a>
-  <a href="contact.html" data-page="contact"><i class="bi bi-telephone-fill" style="margin-right:10px;"></i> Contact</a>
+  <a href="index.html"   data-page="index"><i class="bi bi-house-door-fill"></i> Home</a>
+  <a href="about.html"   data-page="about"><i class="bi bi-info-circle-fill"></i> About</a>
+  <a href="courses.html" data-page="courses"><i class="bi bi-book-half"></i> Courses</a>
+  <a href="gallery.html" data-page="gallery"><i class="bi bi-images"></i> Gallery</a>
+  <a href="contact.html" data-page="contact"><i class="bi bi-telephone-fill"></i> Contact</a>
 </div>
 `;
 
@@ -126,11 +126,12 @@ function setActiveNavLink() {
   });
 }
 
-/* ── Navbar Scroll Effect ── */
+/* ── Navbar Scroll Effect & Mobile Menu (A2 Updated) ── */
 function initNavbar() {
-  const navbar   = document.getElementById('navbar');
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobileNav');
+  const navbar     = document.getElementById('navbar');
+  const hamburger  = document.getElementById('hamburger');
+  const mobileNav  = document.getElementById('mobileNav');
+  const navOverlay = document.getElementById('navOverlay');
 
   if (!navbar) return;
 
@@ -146,8 +147,6 @@ function initNavbar() {
   }, { passive: true });
 
   if (hamburger && mobileNav) {
-    const navOverlay = document.getElementById('navOverlay');
-
     function openMobileNav() {
       hamburger.classList.add('open');
       mobileNav.classList.add('open');

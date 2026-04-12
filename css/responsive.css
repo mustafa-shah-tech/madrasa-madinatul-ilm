@@ -1,10 +1,9 @@
 /* ============================================================
    MADRASA MADINATUL ILM — responsive.css
-   Mobile-first breakpoints
+   Mobile-first complete responsive system
    ============================================================ */
 
 /* ── Base class (no media query) ── */
-/* Issue 3: Steps grid for courses.html admission section */
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -13,49 +12,44 @@
 }
 
 /* ── Large screens (min-width: 1440px) ── */
-/* Issue 8: Enhanced spacing and typography on wide monitors */
 @media (min-width: 1440px) {
   :root { --section-pad: 100px; }
-
-  .container         { width: 85%; }
-  .hero-name-arabic  { font-size: 4rem; }
-  .section-title     { font-size: 3.2rem; }
-  .stats-grid        { gap: 40px; }
-  .course-card-body  { padding: 32px; }
+  .container { width: 85%; }
+  .hero-name-arabic { font-size: 4rem; }
+  .section-title { font-size: 3.2rem; }
+  .stats-grid { gap: 40px; }
+  .course-card-body { padding: 32px; }
+  .full-course-sidebar { padding: 52px 36px; }
 }
 
 /* ── Tablet (max-width: 1024px) ── */
 @media (max-width: 1024px) {
-  :root { --section-pad: 60px; }
+  :root { --section-pad: 64px; }
 
-  .stats-grid             { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .stat-item:nth-child(2) { border-right: none; }
   .stat-item:nth-child(3) { border-right: 1px solid var(--gray-100); }
 
-  .courses-grid       { grid-template-columns: repeat(2, 1fr); }
-
-  /* Issue 4: 3rd course card spans full width when it would be orphaned */
+  .courses-grid { grid-template-columns: repeat(2, 1fr); }
   .courses-grid .course-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
-  .about-teaser-grid  { gap: 36px; }
-  .prayer-grid        { grid-template-columns: repeat(3, 1fr); }
+  .about-teaser-grid { gap: 36px; }
+  .prayer-grid { grid-template-columns: repeat(3, 1fr); }
 
-  .footer-grid        { grid-template-columns: 1fr 1fr; }
-  .footer-brand       { grid-column: 1 / -1; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
 
-  .full-course-card   { grid-template-columns: 240px 1fr; }
-  .pillars-grid       { grid-template-columns: repeat(2, 1fr); }
+  .full-course-card { grid-template-columns: 240px 1fr; }
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; }
 
-  .contact-grid       { grid-template-columns: 1fr; }
-
-  /* Steps grid: 2 columns on tablet */
-  .steps-grid         { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ── Mobile (max-width: 768px) ── */
 @media (max-width: 768px) {
   :root {
-    --section-pad: 48px;
+    --section-pad: 52px;
     --nav-height: 64px;
   }
 
@@ -67,37 +61,42 @@
   .hero-bismillah { font-size: 1.5rem; }
   .hero-logo      { width: 100px; height: 100px; }
   .hero-btns      { flex-direction: column; align-items: center; }
-  .hero-btns .btn { width: 200px; justify-content: center; }
+  .hero-btns .btn { width: 220px; justify-content: center; }
+
+  /* Hero landscape */
+  @media (orientation: landscape) {
+    .hero { min-height: auto; padding: 100px 0 60px; }
+    .hero-scroll { display: none; }
+  }
 
   /* Stats */
   .stats-grid { grid-template-columns: 1fr 1fr; }
-  .stat-item  { border-right: none; border-bottom: 1px solid var(--gray-100); padding: 20px; }
-  .stat-item:nth-child(3) { border-right: none; }
-
-  /* Issue 5: Last row (items 3 & 4) must have no border-bottom in the 2×2 grid */
+  .stat-item  {
+    border-right: none;
+    border-bottom: 1px solid var(--gray-100);
+    padding: 20px;
+  }
   .stat-item:nth-child(3),
   .stat-item:last-child { border-bottom: none; }
 
-  /* Courses */
+  /* Courses grid */
   .courses-grid { grid-template-columns: 1fr; }
 
   /* About teaser */
   .about-teaser-grid { grid-template-columns: 1fr; }
-  .about-visual      { order: -1; }
-  .about-badge-float { bottom: -10px; right: 0px; }
+  .about-visual      { order: -1; padding-bottom: 40px; }
+  .about-badge-float { bottom: 0; right: 12px; }
 
   /* Prayer */
   .prayer-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Mission/Vision */
   .mission-vision-grid { grid-template-columns: 1fr; }
-  .pillars-grid        { grid-template-columns: 1fr; }
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
 
-  /* Courses Full */
-  .full-course-card        { grid-template-columns: 1fr; }
+  /* Courses full page */
+  .full-course-card { grid-template-columns: 1fr; }
   .full-course-card.reverse { direction: ltr; }
-
-  /* Issue 6: Sidebar becomes horizontal compact row on mobile */
   .full-course-sidebar {
     flex-direction: row;
     flex-wrap: wrap;
@@ -109,6 +108,9 @@
   }
   .fcs-duration { margin-top: 0; }
 
+  /* Steps grid (courses.html) */
+  .steps-grid { grid-template-columns: 1fr; gap: 20px; }
+
   /* Gallery */
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-item:nth-child(1),
@@ -119,30 +121,16 @@
   .form-row     { grid-template-columns: 1fr; }
 
   /* Footer */
-  .footer-grid          { grid-template-columns: 1fr; gap: 32px; }
-  .footer-bottom        { flex-direction: column; text-align: center; }
+  .footer-grid   { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
 
   /* CTA */
   .cta-btns { flex-direction: column; align-items: center; }
-  .cta-btns .btn { width: 220px; justify-content: center; }
+  .cta-btns .btn { width: 240px; justify-content: center; }
 
-  /* WhatsApp float */
-  .wa-float { bottom: 20px; right: 20px; }
-
-  /* Steps grid: 1 column on mobile */
-  .steps-grid { grid-template-columns: 1fr; }
-}
-
-/* Issue 9: Hero section on landscape mobile — avoid 100vh trap */
-@media (max-width: 768px) and (orientation: landscape) {
-  .hero       { min-height: auto; padding: 100px 0 60px; }
-  .hero-scroll { display: none; }
-}
-
-/* Hide hero-scroll on very short screens to prevent overlap */
-@media (max-height: 600px) {
-  .hero-scroll { display: none; }
-  .hero { padding-bottom: 20px; }
+  /* WhatsApp */
+  .wa-float         { bottom: 20px; right: 20px; }
+  .wa-float::before { display: none; }
 }
 
 /* ── Small Mobile (max-width: 480px) ── */
@@ -150,11 +138,12 @@
   .container { width: 94%; }
 
   .hero-name-arabic { font-size: 1.6rem; }
+  .hero-bismillah   { font-size: 1.3rem; }
 
-  .stats-grid   { grid-template-columns: 1fr 1fr; }
-  .stat-number  { font-size: 2rem; }
+  .stats-grid  { grid-template-columns: 1fr 1fr; }
+  .stat-number { font-size: 2rem; }
 
-  .prayer-grid  { grid-template-columns: 1fr 1fr; }
+  .prayer-grid { grid-template-columns: 1fr 1fr; }
   .prayer-card:last-child { grid-column: 1 / -1; }
 
   .gallery-grid { grid-template-columns: 1fr; }
@@ -165,36 +154,48 @@
 
   .page-hero { padding: 100px 0 48px; }
 
-  /* Issue 10: CTA section padding too large on small phones */
-  .cta-section    { padding: 52px 0; }
+  .cta-section { padding: 52px 0; }
   .cta-section h2 { font-size: 1.6rem; }
+
+  .pillars-grid { grid-template-columns: 1fr; }
+
+  .full-course-body { padding: 24px 20px; }
+  .contact-info-card,
+  .contact-form-card { padding: 28px 20px; }
+  .mv-card { padding: 28px 20px; }
+  .footer-grid { gap: 24px; }
+
+  .course-info-row { flex-direction: column; gap: 10px; }
 }
 
 /* ── Very Small Mobile (max-width: 360px) ── */
-/* Issue 7: Support 360px Android phones */
 @media (max-width: 360px) {
   .container { width: 96%; }
 
   .nav-logo-text .en-name { display: none; }
+  .nav-logo img { height: 38px; width: 38px; }
 
-  .hero-name-arabic { font-size: 1.4rem; }
-  .hero-bismillah   { font-size: 1.3rem; }
-  .hero-btns .btn   { width: 180px; font-size: 0.85rem; padding: 12px 20px; }
+  .hero-name-arabic { font-size: 1.35rem; }
+  .hero-bismillah   { font-size: 1.1rem; }
+  .hero-btns .btn   { width: 180px; font-size: 0.85rem; padding: 11px 18px; }
+  .hero-logo        { width: 84px; height: 84px; }
 
-  .section-title    { font-size: 1.6rem; }
-  .stat-number      { font-size: 1.7rem; }
+  .section-title { font-size: 1.5rem; }
+  .stat-number   { font-size: 1.7rem; }
 
-  .prayer-time         { font-size: 1.2rem; }
-  .prayer-name-arabic  { font-size: 1.1rem; }
+  .prayer-time         { font-size: 1.1rem; }
+  .prayer-name-arabic  { font-size: 1rem; }
+  .prayer-card         { padding: 16px 10px; }
 
-  .full-course-body    { padding: 24px 16px; }
+  .full-course-body    { padding: 20px 14px; }
   .contact-info-card,
-  .contact-form-card   { padding: 24px 16px; }
-  .mv-card             { padding: 24px 16px; }
+  .contact-form-card   { padding: 20px 14px; }
+  .mv-card             { padding: 20px 14px; }
 
-  .footer-grid         { gap: 24px; }
+  .btn { padding: 11px 18px; font-size: 0.85rem; }
 
-  .btn { padding: 12px 20px; font-size: 0.88rem; }
+  .footer-brand .arabic-quote { font-size: 0.95rem; }
+  .fcs-name-arabic { font-size: 1.5rem; }
 }
 
 /* ── RTL Specific ── */
