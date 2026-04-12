@@ -1,7 +1,7 @@
 /* ============================================================
    MADRASA MADINATUL ILM — ayah.js
    Fetches a daily Ayah from Al-Quran Cloud API
-   Arabic + English + Urdu translations
+   Arabic + English + Urdu translations with 24h caching
    ============================================================ */
 
 // Use day-of-year as seed so same ayah shows all day
@@ -19,6 +19,41 @@ function getDailyAyahNumber() {
   return (day % 6236) + 1; // 1-indexed
 }
 
+// Cache helper: 24 hours
+const CACHE_KEY = 'madrasa_ayah_cache';
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+
+function getCachedAyah() {
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (!cached) return null;
+    
+    const { data, timestamp } = JSON.parse(cached);
+    const now = Date.now();
+    
+    if (now - timestamp < CACHE_DURATION) {
+      return data;
+    }
+    
+    localStorage.removeItem(CACHE_KEY);
+    return null;
+  } catch (e) {
+    console.warn('Cache read error:', e);
+    return null;
+  }
+}
+
+function setCachedAyah(data) {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({
+      data,
+      timestamp: Date.now()
+    }));
+  } catch (e) {
+    console.warn('Cache write error:', e);
+  }
+}
+
 async function loadAyah() {
   const arabicEl  = document.getElementById('ayah-arabic');
   const engEl     = document.getElementById('ayah-english');
@@ -26,6 +61,16 @@ async function loadAyah() {
   const refEl     = document.getElementById('ayah-ref');
 
   if (!arabicEl) return;
+
+  // Check cache first
+  const cached = getCachedAyah();
+  if (cached) {
+    arabicEl.textContent = cached.arabic;
+    if (engEl)  engEl.textContent  = cached.english;
+    if (urduEl) urduEl.textContent = cached.urdu;
+    if (refEl)  refEl.textContent  = cached.reference;
+    return;
+  }
 
   // Show loading
   arabicEl.textContent = 'جاری ہے...';
@@ -53,13 +98,23 @@ async function loadAyah() {
     const surahAr   = arabic.surah.name;
     const ayahNo    = arabic.numberInSurah;
 
+    const ayahData = {
+      arabic: arabic.text,
+      english: english ? `"${english.text}"` : '',
+      urdu: urdu ? urdu.text : '',
+      reference: `— ${surahAr} (${surahName}) : ${ayahNo}`
+    };
+
+    // Cache the result
+    setCachedAyah(ayahData);
+
     arabicEl.classList.remove('ayah-loading');
     arabicEl.classList.add('ayah-fade');
-    arabicEl.textContent = arabic.text;
+    arabicEl.textContent = ayahData.arabic;
 
-    if (engEl)  engEl.textContent  = english  ? `"${english.text}"` : '';
-    if (urduEl) urduEl.textContent = urdu      ? urdu.text          : '';
-    if (refEl)  refEl.textContent  = `— ${surahAr} (${surahName}) : ${ayahNo}`;
+    if (engEl)  engEl.textContent  = ayahData.english;
+    if (urduEl) urduEl.textContent = ayahData.urdu;
+    if (refEl)  refEl.textContent  = ayahData.reference;
 
   } catch (err) {
     console.error('Ayah fetch failed:', err);

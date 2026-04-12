@@ -1,6 +1,7 @@
 /* ============================================================
    MADRASA MADINATUL ILM — prayer-times.js
    Fetches prayer times for Bat Khela, KPK from Aladhan API
+   With 1-hour caching for performance
    ============================================================ */
 
 // Bat Khela coordinates
@@ -15,6 +16,41 @@ const PRAYERS = [
   { key: 'Maghrib', arabic: 'المغرب',  en: 'Maghrib' },
   { key: 'Isha',    arabic: 'العشاء',  en: 'Isha'    },
 ];
+
+// Cache helper: 1 hour
+const CACHE_KEY = 'madrasa_prayer_cache';
+const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
+
+function getCachedPrayerTimes() {
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (!cached) return null;
+    
+    const { data, timestamp } = JSON.parse(cached);
+    const now = Date.now();
+    
+    if (now - timestamp < CACHE_DURATION) {
+      return data;
+    }
+    
+    localStorage.removeItem(CACHE_KEY);
+    return null;
+  } catch (e) {
+    console.warn('Cache read error:', e);
+    return null;
+  }
+}
+
+function setCachedPrayerTimes(data) {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({
+      data,
+      timestamp: Date.now()
+    }));
+  } catch (e) {
+    console.warn('Cache write error:', e);
+  }
+}
 
 function to12Hour(timeStr) {
   if (!timeStr) return '—';
@@ -49,6 +85,31 @@ async function loadPrayerTimes() {
 
   if (!container) return;
 
+  // Check cache first
+  const cached = getCachedPrayerTimes();
+  if (cached) {
+    const { timings, date, hijri } = cached;
+    
+    if (dateEl) {
+      dateEl.textContent = `${date} | ${hijri.day} ${hijri.month.en} ${hijri.year} AH`;
+    }
+
+    const activePrayer = getCurrentPrayer(timings);
+
+    container.innerHTML = '';
+    PRAYERS.forEach((prayer, idx) => {
+      const card = document.createElement('div');
+      card.className = `prayer-card${idx === activePrayer ? ' active-prayer' : ''}`;
+      card.innerHTML = `
+        <span class="prayer-name-arabic">${prayer.arabic}</span>
+        <span class="prayer-name-en">${prayer.en}</span>
+        <span class="prayer-time">${to12Hour(timings[prayer.key])}</span>
+      `;
+      container.appendChild(card);
+    });
+    return;
+  }
+
   // Show loading state
   container.innerHTML = '<p class="prayer-loading">Loading prayer times...</p>';
 
@@ -64,6 +125,9 @@ async function loadPrayerTimes() {
     const timings = data.data.timings;
     const date    = data.data.date.readable;
     const hijri   = data.data.date.hijri;
+
+    // Cache the result
+    setCachedPrayerTimes({ timings, date, hijri });
 
     if (dateEl) {
       dateEl.textContent = `${date} | ${hijri.day} ${hijri.month.en} ${hijri.year} AH`;
