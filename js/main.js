@@ -35,8 +35,8 @@ const NAV_HTML = `
 <div class="nav-overlay" id="navOverlay"></div>
 <div class="mobile-nav" id="mobileNav">
   <a href="index.html"   data-page="index"><i class="bi bi-house-door-fill"></i> Home</a>
-  <a href="about.html"   data-page="about"><i class="bi bi-info-circle-fill"></i> About</a>
   <a href="courses.html" data-page="courses"><i class="bi bi-book-half"></i> Courses</a>
+  <a href="about.html"   data-page="about"><i class="bi bi-info-circle-fill"></i> About</a>
   <a href="gallery.html" data-page="gallery"><i class="bi bi-images"></i> Gallery</a>
   <a href="donation.html" data-page="donation"><i class="bi bi-heart-fill"></i> Donate</a>
   <a href="contact.html" data-page="contact"><i class="bi bi-telephone-fill"></i> Contact</a>
