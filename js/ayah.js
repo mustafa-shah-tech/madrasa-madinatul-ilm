@@ -17,16 +17,19 @@ function getDailyAyahNumber() {
 
 async function loadAyah() {
   const arabicEl = document.getElementById('ayah-arabic');
+  if (!arabicEl) {
+    setTimeout(loadAyah, 500);
+    return;
+  }
+
   const engEl    = document.getElementById('ayah-english');
   const urduEl   = document.getElementById('ayah-urdu');
   const refEl    = document.getElementById('ayah-ref');
 
-  if (!arabicEl) return;
-
   arabicEl.textContent = 'جاری ہے...';
   arabicEl.classList.add('ayah-loading');
 
-  // B4: Check localStorage cache (24-hour validity)
+  // Check localStorage cache (24-hour validity)
   const today     = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
   const cacheKey  = 'ayah_cache';
   let cached      = null;
@@ -35,9 +38,14 @@ async function loadAyah() {
     const raw = localStorage.getItem(cacheKey);
     if (raw) {
       const parsed = JSON.parse(raw);
-      if (parsed.date === today) cached = parsed;
+      if (parsed.date === today) {
+        cached = parsed;
+        console.log('Ayah cache hit for', today);
+      }
     }
-  } catch (_) {}
+  } catch (e) {
+    console.warn('Ayah cache read failed:', e);
+  }
 
   if (cached) {
     arabicEl.classList.remove('ayah-loading');
