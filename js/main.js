@@ -24,6 +24,7 @@ const NAV_HTML = `
       <a href="about.html"   data-page="about">About</a>
       <a href="courses.html" data-page="courses">Courses</a>
       <a href="gallery.html" data-page="gallery">Gallery</a>
+      <a href="donation.html" data-page="donation" class="nav-donate">Donate</a>
       <a href="contact.html" data-page="contact" class="nav-cta">Contact Us</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
@@ -37,6 +38,7 @@ const NAV_HTML = `
   <a href="about.html"   data-page="about"><i class="bi bi-info-circle-fill"></i> About</a>
   <a href="courses.html" data-page="courses"><i class="bi bi-book-half"></i> Courses</a>
   <a href="gallery.html" data-page="gallery"><i class="bi bi-images"></i> Gallery</a>
+  <a href="donation.html" data-page="donation"><i class="bi bi-heart-fill"></i> Donate</a>
   <a href="contact.html" data-page="contact"><i class="bi bi-telephone-fill"></i> Contact</a>
 </div>
 `;
@@ -65,6 +67,7 @@ const FOOTER_HTML = `
           <li><a href="about.html"><i class="bi bi-arrow-right-short"></i> About Us</a></li>
           <li><a href="courses.html"><i class="bi bi-arrow-right-short"></i> Our Courses</a></li>
           <li><a href="gallery.html"><i class="bi bi-arrow-right-short"></i> Gallery</a></li>
+          <li><a href="donation.html"><i class="bi bi-arrow-right-short"></i> Donate</a></li>
           <li><a href="contact.html"><i class="bi bi-arrow-right-short"></i> Contact</a></li>
         </ul>
       </div>

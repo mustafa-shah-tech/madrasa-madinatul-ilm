@@ -1727,3 +1727,474 @@ h1, h2, h3, h4, h5 {
   outline: 2px solid var(--gold);
   border-radius: 4px;
 }
+
+/* ============================================================
+   NAV — Donate link (gold pill)
+   ============================================================ */
+.nav-links a.nav-donate {
+  background: rgba(201,168,76,0.15);
+  color: var(--gold) !important;
+  border: 1px solid rgba(201,168,76,0.3);
+}
+.nav-links a.nav-donate:hover,
+.nav-links a.nav-donate.active {
+  background: rgba(201,168,76,0.28);
+  color: var(--gold) !important;
+}
+
+/* ============================================================
+   DONATION PAGE — Why Donate
+   ============================================================ */
+.donate-why {
+  background: var(--white);
+}
+
+.donate-verse {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 56px;
+  padding: 36px 40px;
+  background: var(--green-100);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--green-700);
+}
+
+.donate-verse-arabic {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  color: var(--green-900);
+  line-height: 1.9;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.donate-verse-translation {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--gray-600);
+  margin-bottom: 8px;
+}
+
+.donate-verse-ref {
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.donate-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.donate-impact-item {
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  border-bottom: 3px solid var(--green-300);
+  transition: var(--transition);
+}
+
+.donate-impact-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-bottom-color: var(--green-700);
+}
+
+.donate-impact-icon {
+  font-size: 2.8rem;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.donate-impact-item h3 {
+  font-size: 1.2rem;
+  color: var(--green-900);
+  margin-bottom: 10px;
+}
+
+.donate-impact-item p {
+  font-size: 0.92rem;
+  color: var(--gray-600);
+  line-height: 1.65;
+}
+
+/* ============================================================
+   DONATION PAGE — Categories
+   ============================================================ */
+.donate-categories {
+  background: var(--cream);
+}
+
+.donation-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.donation-cat-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border-top: 4px solid var(--green-700);
+  box-shadow: var(--shadow-md);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.donation-cat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.donation-cat-icon {
+  font-size: 2.4rem;
+  margin-bottom: 16px;
+}
+
+.donation-cat-arabic {
+  font-family: var(--font-arabic);
+  font-size: 1.3rem;
+  direction: rtl;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.donation-cat-card h3 {
+  font-size: 1.2rem;
+  color: var(--green-900);
+  margin-bottom: 12px;
+}
+
+.donation-cat-card p {
+  font-size: 0.92rem;
+  color: var(--gray-600);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.donation-cat-badge {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 16px;
+  background: var(--gold-light);
+  color: #7A5C1A;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  align-self: flex-start;
+}
+
+/* ============================================================
+   DONATION PAGE — Payment Methods
+   ============================================================ */
+.donate-payment {
+  background: var(--white);
+}
+
+.donation-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.payment-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--green-700);
+  padding: 32px 28px;
+}
+
+.payment-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.payment-card-icon {
+  font-size: 2.2rem;
+  color: var(--green-700);
+  flex-shrink: 0;
+}
+
+.payment-card-header h3 {
+  font-size: 1.2rem;
+  color: var(--green-900);
+  margin-bottom: 4px;
+}
+
+.payment-card-arabic {
+  font-size: 1rem;
+  color: var(--gray-600);
+}
+
+.payment-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.payment-info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.payment-info-label {
+  color: var(--gray-400);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 120px;
+}
+
+.payment-info-value {
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.payment-note {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  background: var(--green-100);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  line-height: 1.5;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.payment-note i {
+  color: var(--green-700);
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ============================================================
+   DONATION PAGE — Copy Button
+   ============================================================ */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  background: transparent;
+  border: 1.5px solid var(--green-500);
+  color: var(--green-700);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-body);
+}
+
+.copy-btn:hover {
+  background: var(--green-700);
+  color: var(--white);
+  border-color: var(--green-700);
+}
+
+/* ============================================================
+   DONATION PAGE — Student Sponsorship
+   ============================================================ */
+.donate-sponsorship {
+  background: var(--green-900);
+  padding: var(--section-pad) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.donate-sponsorship::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    60deg, rgba(201,168,76,0.05) 0, rgba(201,168,76,0.05) 1px, transparent 0, transparent 30px
+  );
+}
+
+.donate-sponsorship .container { position: relative; z-index: 1; }
+
+.sponsorship-box {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-lg);
+  padding: 48px 40px;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sponsorship-amount {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.sponsorship-amount span {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 400;
+}
+
+.sponsorship-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 36px;
+}
+
+.sponsorship-covers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.sponsorship-cover-item {
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.sponsorship-cover-item span {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.sponsorship-cover-item p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.4;
+}
+
+.sponsorship-dua {
+  font-size: 0.9rem;
+  color: var(--green-300);
+  margin-bottom: 28px;
+  font-style: italic;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--dark);
+  font-weight: 700;
+}
+
+.btn-gold:hover {
+  background: #E5B93C;
+  transform: translateY(-2px);
+  color: var(--dark);
+}
+
+/* ============================================================
+   DONATION PAGE — WhatsApp Section
+   ============================================================ */
+.donate-whatsapp {
+  background: var(--cream);
+}
+
+.btn-wa-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 40px;
+  background: #25D366;
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.btn-wa-large i { font-size: 1.4rem; }
+
+.btn-wa-large:hover {
+  background: #1ebe5a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+  color: var(--white);
+}
+
+.donate-isaal-note {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+
+/* ============================================================
+   DONATION PAGE — Quran Quote Banner
+   ============================================================ */
+.donate-quote-banner {
+  background: linear-gradient(135deg, var(--green-900), #163B20);
+  padding: 60px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.donate-quote-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg, rgba(201,168,76,0.04) 0, rgba(201,168,76,0.04) 1px, transparent 0, transparent 30px
+  );
+}
+
+.donate-quote-banner .container { position: relative; z-index: 1; }
+
+.donate-quote-arabic {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--white);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.donate-quote-translation {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 8px;
+}
+
+.donate-quote-ref {
+  font-size: 0.88rem;
+  color: var(--gold);
+  opacity: 0.85;
+}
