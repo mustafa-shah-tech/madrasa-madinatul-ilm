@@ -197,6 +197,7 @@ function initScrollReveal() {
 
 /* ── Counter Animation ── */
 function animateCounter(el, target, duration = 1800) {
+  el.dataset.animated = 'true';
   const start    = performance.now();
   const startVal = 0;
 
@@ -220,14 +221,24 @@ function initCounters() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el     = entry.target;
+        if (el.dataset.animated) return;
         const target = parseInt(el.dataset.target, 10);
         animateCounter(el, target);
         observer.unobserve(el);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.15 });
 
   counterEls.forEach(el => observer.observe(el));
+
+  // Fallback: fire any counter that hasn't animated after 3 seconds
+  setTimeout(() => {
+    document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+      if (el.dataset.animated) return;
+      const target = parseInt(el.dataset.target, 10);
+      animateCounter(el, target);
+    });
+  }, 3000);
 }
 
 /* ── Gallery Lightbox (simple) ── */
