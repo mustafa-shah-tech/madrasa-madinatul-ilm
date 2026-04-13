@@ -205,3 +205,51 @@
   padding-left: 0;
   padding-right: 12px;
 }
+
+/* ============================================================
+   DONATION PAGE — Responsive
+   ============================================================ */
+@media (max-width: 1024px) {
+  .donate-impact-grid { gap: 16px; }
+  .donation-categories-grid { gap: 16px; }
+  .donation-methods-grid { grid-template-columns: 1fr; }
+  .donate-verse { padding: 32px 24px; }
+}
+
+@media (max-width: 768px) {
+  .donate-impact-grid { grid-template-columns: 1fr; }
+  .donation-categories-grid { grid-template-columns: 1fr; }
+  
+  .donate-verse-arabic { font-size: 1.6rem; }
+  .sponsorship-amount { font-size: 2.2rem; }
+  
+  .payment-card { padding: 24px 20px; }
+  
+  .sponsorship-covers { grid-template-columns: 1fr 1fr; }
+  
+  .btn-wa-large,
+  .btn-gold {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .donate-verse { margin-bottom: 40px; }
+  .donate-verse-arabic { font-size: 1.4rem; }
+  
+  .payment-card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .payment-info-label { min-width: 100%; margin-bottom: 2px; }
+  .payment-info-row { flex-direction: column; align-items: flex-start; gap: 4px; padding-bottom: 8px; border-bottom: 1px dashed rgba(0,0,0,0.05); }
+  .payment-info-row:last-child { border-bottom: none; }
+  
+  .sponsorship-box { padding: 32px 20px; }
+  .sponsorship-covers { grid-template-columns: 1fr; gap: 12px; }
+  
+  .btn-wa-large { font-size: 0.95rem; padding: 14px 20px; }
+}
